@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+$DarkBlue: hsl(209, 23%, 22%);
+$VeryDarkBlue: hsl(207, 26%, 17%);
+$LightModeText: hsl(200, 15%, 8%);
+$LightModeInput: hsl(0, 0%, 52%);
+$LightGray: hsl(0, 0%, 90%);
+$VeryLightGray: hsl(0, 0%, 98%);
+$White: hsl(0, 0%, 100%);
+$Red: hsl(0, 100%, 50%);
+
+$font: 'Nunito Sans', sans-serif;
+
+@mixin phone {
+    @media (min-width: 375px) and (max-width: 540px) { @content; }
+}
+
+@mixin tablet {
+    @media (min-width: 541px) and (max-width: 999px) { @content; }
+}
