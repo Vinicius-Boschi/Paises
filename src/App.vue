@@ -1,22 +1,19 @@
 <template>
   <Header />
   <Main />
-
-  <!-- <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink> -->
-
-  <!-- <RouterView /> -->
+  <BackToTop />
 </template>
 
 <script>
-  // import { RouterLink, RouterView } from 'vue-router'
   import Header from './components/Header.vue'
   import Main from './components/Main.vue'
+  import BackToTop from './components/BackToTop.vue'
 
   export default {
     components: {
       Header,
-      Main
+      Main,
+      BackToTop
     }
   }
 </script>
@@ -80,12 +77,17 @@
     }
   }
 
+  * {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: $VeryDarkBlue;
   }
 
   #app {
     font-family: $font;
+    
   }
 
 </style>

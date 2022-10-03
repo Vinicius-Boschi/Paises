@@ -5,17 +5,6 @@
                 <input type="search" class="main__input" id="searchInput" placeholder="Search for a country...">
                 <button class="main__button" v-on:click="this.searchInfos()">Search</button>
             </div>
-            <div class="main__dropdown">
-                <select name="regions" id="region" class="main__select">
-                    <option value="filter" class="main__option">Filter by Region</option>
-                    <option value="africa" class="main__option" data-id="africa">Africa</option>
-                    <option value="america" class="main__option" data-id="americas">Americas</option>
-                    <option value="asia" class="main__option" data-id="asia">Asia</option>
-                    <option value="europe" class="main__option" data-id="europe">Europe</option>
-                    <option value="oceania" class="main__option" data-id="oceania">Oceania</option>
-                    <option value="antartic" class="main__option" data-id="antartic">Antartic</option>
-                </select>
-            </div>
         </div>
         <div class="main__error" v-if="errored">
             Sorry, we couldn't find the informations. Please, try again later.
@@ -45,13 +34,13 @@
                 searchInfos() {
                     let input = document.getElementById('searchInput').value
                     input = input.toLowerCase()
-                    let x = document.getElementsByClassName('main__info')
+                    let infos = document.getElementsByClassName('main__info')
                     
-                    for(let i = 0; i < x.length; i++) {
-                        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-                            x[i].style.display = "none"
+                    for (let i = 0; i < infos.length; i++) {
+                        if (!infos[i].innerHTML.toLowerCase().includes(input)) {
+                            infos[i].style.display = "none"
                         } else {
-                            x[i].style.display = "block"
+                            infos[i].style.display = "block"
                         }
                     }
                 },
@@ -64,27 +53,12 @@
                         this.errored = true
                     })
                     .finally(() => this.loading = false)
-                },
-                filterOptions() {
-                    const filterBtns = document.querySelectorAll('.main__option')
-
-                    filterBtns.forEach(function(btn) {
-                        btn.addEventListener('click', function(e) {
-                            const category = e.currentTarget.dataset.id
-                            const menuCountrys = menu.filter(function(MenuOptions) {
-                                if (MenuOptions.category === category) {
-                                    return MenuOptions
-                                }
-                            }) 
-                        })
-                    })
                 }
             }
         },
         mounted() {
             this.request(),
-            this.searchInfos(),
-            this.filterOptions()
+            this.searchInfos()
         }
     }
 </script>
@@ -97,8 +71,6 @@
 
         &__items {
             margin-bottom: 3rem;
-            display: flex;
-            justify-content: space-around;
         }
 
         &__input {
@@ -121,16 +93,6 @@
             margin-left: 1rem;
             cursor: pointer;
             border-radius: 5px;
-        }
-
-        &__select {
-            background-color: $DarkBlue;
-            color: $White;
-            padding: .8rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            width: 10rem;
         }
         
         &__error {

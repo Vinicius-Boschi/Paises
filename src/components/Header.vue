@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" id="header">
         <nav class="header__nav">
             <h1 class="header__title">Where in the world?</h1>
             <button class="header__button" v-on:click="darkMode()"></button>
