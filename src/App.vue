@@ -75,6 +75,15 @@
         border: 1px solid $DarkBlue;
       }
     }
+
+    .btn {
+      background-color: $LightModeInput;
+
+      &:hover {
+        background-color: $LightGray;
+        color: $DarkBlue;
+      }
+    }
   }
 
   * {
